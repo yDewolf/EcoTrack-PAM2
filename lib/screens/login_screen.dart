@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 50,
+                  spacing: 20,
                   children: [
                     SizedBox(
                       height: 200,
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       width: 500,
                       child: Column(
-                        spacing: 10.0,
+                        spacing: 30.0,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextField(
@@ -83,26 +83,35 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: passwordTxtController,
                             decoration: InputDecoration(
                               label: Text("Senha"),
-                              prefixIcon: Icon(Icons.password),
+                              prefixIcon: Icon(Icons.lock),
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          Column(
+                            spacing: 10,
                             children: [
-                              ElevatedButton(
-                                onPressed: () => {print("Login")},
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.green,
-                                  foregroundColor: Colors.white,
-                                ),
-                                child: Text(
-                                  "Entrar",
-                                  style: TextStyle(fontSize: 20),
+                              SizedBox(
+                                width: 150,
+                                child: ElevatedButton(
+                                  onPressed: () => {print("Login")},
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    backgroundColor: Colors.green,
+                                    foregroundColor: Colors.white,
+                                  ),
+                                  child: Text(
+                                    "Entrar",
+                                    style: TextStyle(fontSize: 20),
+                                  ),
                                 ),
                               ),
                               ElevatedButton(
                                 onPressed: () => {print("Esqueci")},
                                 style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
                                   backgroundColor: Colors.redAccent,
                                   foregroundColor: Colors.white,
                                 ),
