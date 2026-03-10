@@ -1,4 +1,6 @@
+// main.dart
 import 'package:ecotrack/screens/login_screen.dart';
+import 'package:ecotrack/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

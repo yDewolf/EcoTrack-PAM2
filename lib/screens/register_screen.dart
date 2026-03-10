@@ -1,16 +1,18 @@
-// screens/login_screen.dart
-import 'package:ecotrack/screens/register_screen.dart';
+// screens/register_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
+  final TextEditingController nameTxtController = TextEditingController();
+  final TextEditingController salaTxtController = TextEditingController();
+  final TextEditingController rmTxtController = TextEditingController();
   final TextEditingController emailTxtController = TextEditingController();
   final TextEditingController passwordTxtController = TextEditingController();
 
@@ -27,6 +29,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   spacing: 20,
                   children: [
+                    Row(
+                      children: [
+                    IconButton(onPressed: () => {
+                      Navigator.pop(context)
+                    }, icon: Icon(Icons.arrow_back)),
+                      ],
+                    ),
                     SizedBox(
                       height: 200,
                       width: 400,
@@ -62,6 +71,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextField(
+                            controller: nameTxtController,
+                            decoration: InputDecoration(
+                              label: Text("Nome"),
+                              prefixIcon: Icon(Icons.label),
+                            ),
+                          ),
+                          TextField(
+                            controller: rmTxtController,
+                            decoration: InputDecoration(
+                              label: Text("RM"),
+                              prefixIcon: Icon(Icons.numbers),
+                            ),
+                          ),
+                          TextField(
                             controller: emailTxtController,
                             decoration: InputDecoration(
                               label: Text("Email"),
@@ -81,7 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               SizedBox(
                                 width: 150,
                                 child: ElevatedButton(
-                                  onPressed: () => {print("Login")},
+                                  onPressed: () => {
+                                    Navigator.pop(context)
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(16),
@@ -90,26 +115,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     foregroundColor: Colors.white,
                                   ),
                                   child: Text(
-                                    "Entrar",
+                                    "Registrar",
                                     style: TextStyle(fontSize: 20),
                                   ),
-                                ),
-                              ),
-                              ElevatedButton(
-                                onPressed: () => {
-                                  Navigator.push(context, 
-                                  MaterialPageRoute(builder: (context) => RegisterScreen()))
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                  ),
-                                  backgroundColor: Colors.redAccent,
-                                  foregroundColor: Colors.white,
-                                ),
-                                child: Text(
-                                  "Registrar",
-                                  style: TextStyle(fontSize: 12),
                                 ),
                               ),
                             ],
