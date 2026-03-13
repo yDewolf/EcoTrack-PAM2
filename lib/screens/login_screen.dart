@@ -1,5 +1,6 @@
 // screens/login_screen.dart
 import 'package:ecotrack/screens/register_screen.dart';
+import 'package:ecotrack/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -11,8 +12,28 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService authService = AuthService();
   final TextEditingController emailTxtController = TextEditingController();
   final TextEditingController passwordTxtController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+  bool hidePassword = true;
+
+  // Validar login:
+  void validateLogin() {
+    if (_formKey.currentState!.validate()) {
+      String email = this.emailTxtController.text;
+      String password = this.passwordTxtController.text;
+
+      String? result = "Couldn't Login, password or email is wrong";
+      if (this.authService.login(email, password)) {
+        result = "Logged in succesfully";
+      }
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(result)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,64 +78,92 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(
                       width: 500,
-                      child: Column(
-                        spacing: 30.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextField(
-                            controller: emailTxtController,
-                            decoration: InputDecoration(
-                              label: Text("Email"),
-                              prefixIcon: Icon(Icons.email),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          spacing: 30.0,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextFormField(
+                              controller: emailTxtController,
+                              decoration: InputDecoration(
+                                label: Text("Email"),
+                                prefixIcon: Icon(Icons.email),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "You should fill email field";
+                                }
+                              },
                             ),
-                          ),
-                          TextField(
-                            controller: passwordTxtController,
-                            decoration: InputDecoration(
-                              label: Text("Senha"),
-                              prefixIcon: Icon(Icons.lock),
+                            TextFormField(
+                              controller: passwordTxtController,
+                              obscureText: hidePassword,
+                              decoration: InputDecoration(
+                                label: Text("Senha"),
+                                prefixIcon: Icon(Icons.lock),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "You should fill password field";
+                                }
+
+                                if (value.length < 6) {
+                                  return "Password should have at least 6 characters";
+                                }
+
+                                return "oi";
+                              },
                             ),
-                          ),
-                          Column(
-                            spacing: 10,
-                            children: [
-                              SizedBox(
-                                width: 150,
-                                child: ElevatedButton(
-                                  onPressed: () => {print("Login")},
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                            Column(
+                              spacing: 10,
+                              children: [
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    onPressed: () => validateLogin(),
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                      backgroundColor: Colors.green,
+                                      foregroundColor: Colors.white,
                                     ),
-                                    backgroundColor: Colors.green,
-                                    foregroundColor: Colors.white,
-                                  ),
-                                  child: Text(
-                                    "Entrar",
-                                    style: TextStyle(fontSize: 20),
+                                    child: Text(
+                                      "Entrar",
+                                      style: TextStyle(fontSize: 20),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              ElevatedButton(
-                                onPressed: () => {
-                                  Navigator.push(context, 
-                                  MaterialPageRoute(builder: (context) => RegisterScreen()))
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    onPressed: () => {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              RegisterScreen(),
+                                        ),
+                                      ),
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                      backgroundColor: Colors.green,
+                                      foregroundColor: Colors.white,
+                                    ),
+                                    child: Text(
+                                      "Criar Conta",
+                                      style: TextStyle(fontSize: 20),
+                                    ),
                                   ),
-                                  backgroundColor: Colors.redAccent,
-                                  foregroundColor: Colors.white,
                                 ),
-                                child: Text(
-                                  "Registrar",
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

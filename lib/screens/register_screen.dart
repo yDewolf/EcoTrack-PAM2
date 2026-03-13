@@ -16,6 +16,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController emailTxtController = TextEditingController();
   final TextEditingController passwordTxtController = TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +33,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   children: [
                     Row(
                       children: [
-                    IconButton(onPressed: () => {
-                      Navigator.pop(context)
-                    }, icon: Icon(Icons.arrow_back)),
+                        IconButton(
+                          onPressed: () => {Navigator.pop(context)},
+                          icon: Icon(Icons.arrow_back),
+                        ),
                       ],
                     ),
                     SizedBox(
@@ -66,63 +69,64 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     SizedBox(
                       width: 500,
-                      child: Column(
-                        spacing: 30.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextField(
-                            controller: nameTxtController,
-                            decoration: InputDecoration(
-                              label: Text("Nome"),
-                              prefixIcon: Icon(Icons.label),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          spacing: 30.0,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextFormField(
+                              controller: nameTxtController,
+                              decoration: InputDecoration(
+                                label: Text("Nome"),
+                                prefixIcon: Icon(Icons.label),
+                              ),
                             ),
-                          ),
-                          TextField(
-                            controller: rmTxtController,
-                            decoration: InputDecoration(
-                              label: Text("RM"),
-                              prefixIcon: Icon(Icons.numbers),
+                            TextFormField(
+                              controller: rmTxtController,
+                              decoration: InputDecoration(
+                                label: Text("RM"),
+                                prefixIcon: Icon(Icons.numbers),
+                              ),
                             ),
-                          ),
-                          TextField(
-                            controller: emailTxtController,
-                            decoration: InputDecoration(
-                              label: Text("Email"),
-                              prefixIcon: Icon(Icons.email),
+                            TextFormField(
+                              controller: emailTxtController,
+                              decoration: InputDecoration(
+                                label: Text("Email"),
+                                prefixIcon: Icon(Icons.email),
+                              ),
                             ),
-                          ),
-                          TextField(
-                            controller: passwordTxtController,
-                            decoration: InputDecoration(
-                              label: Text("Senha"),
-                              prefixIcon: Icon(Icons.lock),
+                            TextFormField(
+                              controller: passwordTxtController,
+                              decoration: InputDecoration(
+                                label: Text("Senha"),
+                                prefixIcon: Icon(Icons.lock),
+                              ),
                             ),
-                          ),
-                          Column(
-                            spacing: 10,
-                            children: [
-                              SizedBox(
-                                width: 150,
-                                child: ElevatedButton(
-                                  onPressed: () => {
-                                    Navigator.pop(context)
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                            Column(
+                              spacing: 10,
+                              children: [
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    onPressed: () => {Navigator.pop(context)},
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                      backgroundColor: Colors.green,
+                                      foregroundColor: Colors.white,
                                     ),
-                                    backgroundColor: Colors.green,
-                                    foregroundColor: Colors.white,
-                                  ),
-                                  child: Text(
-                                    "Registrar",
-                                    style: TextStyle(fontSize: 20),
+                                    child: Text(
+                                      "Registrar",
+                                      style: TextStyle(fontSize: 20),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
