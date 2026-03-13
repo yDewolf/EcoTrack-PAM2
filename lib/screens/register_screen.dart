@@ -17,6 +17,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController passwordTxtController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+  final List<String> _accountOptions = ["Professor", "Aluno", "Funcionário"];
+  String? _selectedOption = null;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +77,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           spacing: 30.0,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            DropdownButtonFormField(
+                              items: _accountOptions.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  _selectedOption = newValue;
+                                });
+                              },
+                            ),
                             TextFormField(
                               controller: nameTxtController,
                               decoration: InputDecoration(
