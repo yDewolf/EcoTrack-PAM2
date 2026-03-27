@@ -1,4 +1,5 @@
 // main.dart
+import 'package:ecotrack/screens/home_screen.dart';
 import 'package:ecotrack/screens/login_screen.dart';
 import 'package:ecotrack/screens/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +13,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false, 
-      home: LoginScreen()
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
   }
 }
