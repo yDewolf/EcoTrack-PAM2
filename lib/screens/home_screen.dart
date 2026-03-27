@@ -114,9 +114,16 @@ class _HomePageState extends State<HomePage> {
                               width: double.infinity,
                               height: 35,
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Icon(Icons.add),
-                                  Text("Registrar coleta"),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.add),
+                                      Text("Registrar Coleta"),
+                                    ],
+                                  ),
+                                  Icon(Icons.arrow_forward_ios),
                                 ],
                               ),
                             ),
@@ -128,9 +135,16 @@ class _HomePageState extends State<HomePage> {
                               width: double.infinity,
                               height: 35,
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Icon(Icons.place),
-                                  Text("Pontos de Coleta"),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.place),
+                                      Text("Pontos de Coleta"),
+                                    ],
+                                  ),
+                                  Icon(Icons.arrow_forward_ios),
                                 ],
                               ),
                             ),
@@ -142,9 +156,16 @@ class _HomePageState extends State<HomePage> {
                               width: double.infinity,
                               height: 35,
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Icon(Icons.report),
-                                  Text("Relatórios"),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.report),
+                                      Text("Relatórios"),
+                                    ],
+                                  ),
+                                  Icon(Icons.arrow_forward_ios),
                                 ],
                               ),
                             ),
@@ -156,9 +177,16 @@ class _HomePageState extends State<HomePage> {
                               width: double.infinity,
                               height: 35,
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Icon(Icons.history),
-                                  Text("Histórico"),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.history),
+                                      Text("Histórico"),
+                                    ],
+                                  ),
+                                  Icon(Icons.arrow_forward_ios),
                                 ],
                               ),
                             ),
