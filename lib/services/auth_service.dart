@@ -1,6 +1,6 @@
 class AuthService {
   String usuarioCadastrado = "admin@ecotrack.com";
-  String senhaCadastrada = "admin";
+  String senhaCadastrada = "admin0";
 
   bool login(String email, String password) {
     if (email != this.usuarioCadastrado) {

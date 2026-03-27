@@ -1,4 +1,5 @@
 // screens/login_screen.dart
+import 'package:ecotrack/screens/home_screen.dart';
 import 'package:ecotrack/screens/register_screen.dart';
 import 'package:ecotrack/services/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
       String? result = "Couldn't Login, password or email is wrong";
       if (this.authService.login(email, password)) {
         result = "Logged in succesfully";
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
       }
       ScaffoldMessenger.of(
         context,
@@ -112,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   return "Password should have at least 6 characters";
                                 }
 
-                                return "oi";
+                                return null;
                               },
                             ),
                             Column(

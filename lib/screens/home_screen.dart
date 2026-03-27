@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 width: double.infinity,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Resumo", style: TextStyle(fontSize: 24)),
                     SizedBox(
