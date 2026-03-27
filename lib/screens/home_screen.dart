@@ -14,85 +14,243 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(title: Text("EcoTrack"), backgroundColor: Colors.green),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(32.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 20,
             children: [
-              Column(
-                children: [Text("Olá Erika!"), Text("Bem vinda ao EcoTrack")],
+              SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Olá Erika!", style: TextStyle(fontSize: 24)),
+                    Text(
+                      "Bem vinda ao EcoTrack",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                children: [
-                  Text("Resumo"),
-                  Row(
-                    children: [
-                      Card(
-                        key: Key("Coletas"),
-                        color: Colors.white70,
-                        child: SizedBox(
-                          width: 75,
-                          height: 75,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [Icon(Icons.recycling), Text("38")],
+              SizedBox(
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Text("Resumo", style: TextStyle(fontSize: 24)),
+                    SizedBox(
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Card(
+                              key: Key("Coletas"),
+                              color: Colors.white70,
+                              child: SizedBox(
+                                width: 75,
+                                height: 75,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.recycling),
+                                        Text("67"),
+                                      ],
+                                    ),
+                                    Text("Coletas"),
+                                  ],
+                                ),
                               ),
-                              Text("Coletas"),
-                            ],
-                          ),
+                            ),
+                            Card(
+                              key: Key("Pontos"),
+                              color: Colors.white70,
+                              child: SizedBox(
+                                width: 75,
+                                height: 75,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.star_rate_rounded),
+                                        Text("340"),
+                                      ],
+                                    ),
+                                    Text("Pontos"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Card(
-                        key: Key("Pontos"),
-                        color: Colors.white70,
-                        child: SizedBox(
-                          width: 75,
-                          height: 75,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Ações Rápidas", style: TextStyle(fontSize: 24)),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Card(
+                            key: Key("registrarColeta"),
+                            color: Colors.white70,
+                            child: SizedBox(
+                              width: double.infinity,
+                              height: 35,
+                              child: Row(
                                 children: [
-                                  Icon(Icons.safety_check),
-                                  Text("40"),
+                                  Icon(Icons.add),
+                                  Text("Registrar coleta"),
                                 ],
                               ),
-                              Text("Pontos"),
-                            ],
+                            ),
                           ),
+                          Card(
+                            key: Key("pontosColeta"),
+                            color: Colors.white70,
+                            child: SizedBox(
+                              width: double.infinity,
+                              height: 35,
+                              child: Row(
+                                children: [
+                                  Icon(Icons.place),
+                                  Text("Pontos de Coleta"),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Card(
+                            key: Key("relatorios"),
+                            color: Colors.white70,
+                            child: SizedBox(
+                              width: double.infinity,
+                              height: 35,
+                              child: Row(
+                                children: [
+                                  Icon(Icons.report),
+                                  Text("Relatórios"),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Card(
+                            key: Key("historico"),
+                            color: Colors.white70,
+                            child: SizedBox(
+                              width: double.infinity,
+                              height: 35,
+                              child: Row(
+                                children: [
+                                  Icon(Icons.history),
+                                  Text("Histórico"),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Atividades Recentes", style: TextStyle(fontSize: 24)),
+                    SizedBox(
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Card(
+                              color: Colors.white70,
+                              child: SizedBox(
+                                width: 100,
+                                height: 100,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.recycling),
+                                        Text("+67 pts"),
+                                      ],
+                                    ),
+                                    Text("Plástico Reciclado"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Card(
+                              color: Colors.white70,
+                              child: SizedBox(
+                                width: 100,
+                                height: 100,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.api),
+                                        Text("+41 pts"),
+                                      ],
+                                    ),
+                                    Text("Plástico Reciclado"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Card(
+                              color: Colors.white70,
+                              child: SizedBox(
+                                width: 100,
+                                height: 100,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.api),
+                                        Text("+727 pts"),
+                                      ],
+                                    ),
+                                    Text("Vidro Reciclado"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text("Ações Rápidas"),
-                  Column(
-                    children: [
-                      Text("Registrar Coleta"),
-                      Text("Pontos de Coleta"),
-                      Text("Relatórios"),
-                      Text("Histórico"),
-                    ],
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text("Atividades Recentes"),
-                  Column(
-                    children: [
-                      Text("Plástico Reciclado"),
-                      Text("Papel Descartado"),
-                      Text("Vidro Reciclado"),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -105,7 +263,7 @@ class _HomePageState extends State<HomePage> {
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list, color: Colors.black),
+            icon: Icon(Icons.report, color: Colors.black),
             label: "Histórico",
           ),
           BottomNavigationBarItem(
