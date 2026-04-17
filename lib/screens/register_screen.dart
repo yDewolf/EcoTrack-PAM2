@@ -1,6 +1,4 @@
-// screens/register_screen.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -10,144 +8,178 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController nameTxtController = TextEditingController();
-  final TextEditingController salaTxtController = TextEditingController();
-  final TextEditingController rmTxtController = TextEditingController();
-  final TextEditingController emailTxtController = TextEditingController();
-  final TextEditingController passwordTxtController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  final List<String> _accountOptions = ["Professor", "Aluno", "Funcionário"];
-  String? _selectedOption = null;
+
+  final TextEditingController nomeController = TextEditingController();
+  final TextEditingController sobrenomeController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController telefoneController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
+  final TextEditingController confirmarSenhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Criar Conta"),
+        backgroundColor: Colors.green,
+      ),
+
       body: SingleChildScrollView(
-        child: Center(
-          child: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 20,
-                  children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () => {Navigator.pop(context)},
-                          icon: Icon(Icons.arrow_back),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 200,
-                      width: 400,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Container(
-                            height: double.infinity,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                                colors: [
-                                  const Color.fromARGB(145, 76, 175, 79),
-                                  const Color.fromARGB(0, 76, 223, 106),
-                                ],
-                              ),
-                            ),
-                          ),
-                          SvgPicture.asset(
-                            height: double.infinity,
-                            "horizontal_logo.svg",
-                            fit: BoxFit.contain,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 500,
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          spacing: 30.0,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            DropdownButtonFormField(
-                              items: _accountOptions.map((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  _selectedOption = newValue;
-                                });
-                              },
-                            ),
-                            TextFormField(
-                              controller: nameTxtController,
-                              decoration: InputDecoration(
-                                label: Text("Nome"),
-                                prefixIcon: Icon(Icons.label),
-                              ),
-                            ),
-                            TextFormField(
-                              controller: rmTxtController,
-                              decoration: InputDecoration(
-                                label: Text("RM"),
-                                prefixIcon: Icon(Icons.numbers),
-                              ),
-                            ),
-                            TextFormField(
-                              controller: emailTxtController,
-                              decoration: InputDecoration(
-                                label: Text("Email"),
-                                prefixIcon: Icon(Icons.email),
-                              ),
-                            ),
-                            TextFormField(
-                              controller: passwordTxtController,
-                              decoration: InputDecoration(
-                                label: Text("Senha"),
-                                prefixIcon: Icon(Icons.lock),
-                              ),
-                            ),
-                            Column(
-                              spacing: 10,
-                              children: [
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    onPressed: () => {Navigator.pop(context)},
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(16),
-                                      ),
-                                      backgroundColor: Colors.green,
-                                      foregroundColor: Colors.white,
-                                    ),
-                                    child: Text(
-                                      "Registrar",
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+
+          child: Form(
+            key: _formKey,
+
+            child: Column(
+              children: [
+
+                TextFormField(
+                  controller: nomeController,
+                  decoration: InputDecoration(
+                    labelText: "Nome",
+                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder()
+                  ),
+
+                  validator: (value){
+                    if(value == null || value.isEmpty){
+                      return "Digite seu nome";
+                    }
+                    return null;
+                  },
                 ),
-              ),
-            ],
+
+                SizedBox(height: 20),
+
+                TextFormField(
+                  controller: sobrenomeController,
+                  decoration: InputDecoration(
+                    labelText: "Sobrenome",
+                    prefixIcon: Icon(Icons.person_outline),
+                    border: OutlineInputBorder()
+                  ),
+                ),
+
+                SizedBox(height: 20),
+
+                TextFormField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: "E-mail",
+                    prefixIcon: Icon(Icons.email),
+                    border: OutlineInputBorder()
+                  ),
+
+                  validator: (value){
+
+                    if(value == null || value.isEmpty){
+                      return "Digite seu e-mail";
+                    }
+
+                    if(!RegExp(r'\S+@\S+\.\S+').hasMatch(value)){
+                      return "Digite um e-mail válido";
+                    }
+
+                    return null;
+                  },
+                ),
+
+                SizedBox(height: 20),
+
+                TextFormField(
+                  controller: telefoneController,
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    labelText: "Telefone",
+                    prefixIcon: Icon(Icons.phone),
+                    border: OutlineInputBorder()
+                  ),
+                ),
+
+                SizedBox(height: 20),
+
+                TextFormField(
+                  controller: senhaController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: "Senha",
+                    prefixIcon: Icon(Icons.lock),
+                    border: OutlineInputBorder()
+                  ),
+
+                  validator: (value){
+
+                    if(value == null || value.isEmpty){
+                      return "Digite uma senha";
+                    }
+
+                    if(value.length < 6){
+                      return "Senha deve ter no mínimo 6 caracteres";
+                    }
+
+                    return null;
+                  },
+                ),
+
+                SizedBox(height: 20),
+
+                TextFormField(
+                  controller: confirmarSenhaController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: "Confirmar Senha",
+                    prefixIcon: Icon(Icons.lock_outline),
+                    border: OutlineInputBorder()
+                  ),
+
+                  validator: (value){
+
+                    if(value != senhaController.text){
+                      return "As senhas não coincidem";
+                    }
+
+                    return null;
+                  },
+                ),
+
+                SizedBox(height: 40),
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+
+                  child: ElevatedButton(
+
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green
+                    ),
+
+                    onPressed: (){
+
+                      if(_formKey.currentState!.validate()){
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Usuário cadastrado com sucesso"))
+                        );
+
+                        Navigator.pop(context);
+                      }
+
+                    },
+
+                    child: Text(
+                      "Cadastrar",
+                      style: TextStyle(fontSize: 16)
+                    ),
+                  ),
+                )
+
+              ],
+            ),
           ),
         ),
       ),
