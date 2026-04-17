@@ -26,17 +26,17 @@ class _LoginScreenState extends State<LoginScreen> {
       String email = this.emailTxtController.text;
       String password = this.passwordTxtController.text;
 
-      String? result = "Couldn't Login, password or email is wrong";
-      if (this.authService.login(email, password)) {
-        result = "Logged in succesfully";
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
-      }
+      Future<String?> result = this.authService.login(
+        email: email,
+        password: password,
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text(result)));
+      ).showSnackBar(SnackBar(content: Text(result.toString())));
     }
   }
 
