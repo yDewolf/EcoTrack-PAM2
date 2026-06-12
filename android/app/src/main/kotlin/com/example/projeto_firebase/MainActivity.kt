@@ -1,4 +1,4 @@
-package com.example.ecotrack
+package com.example.projeto_firebase
 
 import io.flutter.embedding.android.FlutterActivity
 

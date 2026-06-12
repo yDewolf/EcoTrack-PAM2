@@ -1,7 +1,4 @@
-// main.dart
-import 'package:ecotrack/screens/home_screen.dart';
 import 'package:ecotrack/screens/login_screen.dart';
-import 'package:ecotrack/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,9 +10,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RegisterScreen(),
+      home: LoginScreen()
     );
   }
 }

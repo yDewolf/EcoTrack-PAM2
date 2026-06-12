@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "36791425550",
-    "project_id": "ecotrack-erika",
-    "storage_bucket": "ecotrack-erika.firebasestorage.app"
+    "project_number": "535836066275",
+    "project_id": "ecotrackturmaa",
+    "storage_bucket": "ecotrackturmaa.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:36791425550:android:9b8562d18a3610620aba5f",
+        "mobilesdk_app_id": "1:535836066275:android:628ffc8f71fbbf7b8b20d6",
         "android_client_info": {
-          "package_name": "com.example.ecotrack"
+          "package_name": "com.example.projeto_firebase"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyARlSyWmY5LpcfBbwfBLgB2_YFa1uJY8cE"
+          "current_key": "AIzaSyDDIsjynUaHs9OP3t7GWbRJGcuqsyYVmJ8"
         }
       ],
       "services": {

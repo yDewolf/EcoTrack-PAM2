@@ -41,46 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBBfInHW_BuMOGVhsAbvTpDeAywGKjkhcE',
-    appId: '1:36791425550:web:6153a5ce57d339670aba5f',
-    messagingSenderId: '36791425550',
-    projectId: 'ecotrack-erika',
-    authDomain: 'ecotrack-erika.firebaseapp.com',
-    storageBucket: 'ecotrack-erika.firebasestorage.app',
+    apiKey: 'AIzaSyD_6VXGs0hNzwwoSjBn2kfjUCZ9yQsAugU',
+    appId: '1:535836066275:web:37543cc99cb9d31d8b20d6',
+    messagingSenderId: '535836066275',
+    projectId: 'ecotrackturmaa',
+    authDomain: 'ecotrackturmaa.firebaseapp.com',
+    storageBucket: 'ecotrackturmaa.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyARlSyWmY5LpcfBbwfBLgB2_YFa1uJY8cE',
-    appId: '1:36791425550:android:9b8562d18a3610620aba5f',
-    messagingSenderId: '36791425550',
-    projectId: 'ecotrack-erika',
-    storageBucket: 'ecotrack-erika.firebasestorage.app',
+    apiKey: 'AIzaSyDDIsjynUaHs9OP3t7GWbRJGcuqsyYVmJ8',
+    appId: '1:535836066275:android:628ffc8f71fbbf7b8b20d6',
+    messagingSenderId: '535836066275',
+    projectId: 'ecotrackturmaa',
+    storageBucket: 'ecotrackturmaa.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAZ2F0KxyMwsMbGNqC7Th0ZqvVprV3C8tc',
-    appId: '1:36791425550:ios:e4beecfcc2b4d5540aba5f',
-    messagingSenderId: '36791425550',
-    projectId: 'ecotrack-erika',
-    storageBucket: 'ecotrack-erika.firebasestorage.app',
-    iosBundleId: 'com.example.ecotrack',
+    apiKey: 'AIzaSyCrgu3DMzL56BVNLEHdTDEtzaYTDvNu8-g',
+    appId: '1:535836066275:ios:8dbed52b055d502b8b20d6',
+    messagingSenderId: '535836066275',
+    projectId: 'ecotrackturmaa',
+    storageBucket: 'ecotrackturmaa.firebasestorage.app',
+    iosBundleId: 'com.example.projetoFirebase',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAZ2F0KxyMwsMbGNqC7Th0ZqvVprV3C8tc',
-    appId: '1:36791425550:ios:e4beecfcc2b4d5540aba5f',
-    messagingSenderId: '36791425550',
-    projectId: 'ecotrack-erika',
-    storageBucket: 'ecotrack-erika.firebasestorage.app',
-    iosBundleId: 'com.example.ecotrack',
+    apiKey: 'AIzaSyCrgu3DMzL56BVNLEHdTDEtzaYTDvNu8-g',
+    appId: '1:535836066275:ios:8dbed52b055d502b8b20d6',
+    messagingSenderId: '535836066275',
+    projectId: 'ecotrackturmaa',
+    storageBucket: 'ecotrackturmaa.firebasestorage.app',
+    iosBundleId: 'com.example.projetoFirebase',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBBfInHW_BuMOGVhsAbvTpDeAywGKjkhcE',
-    appId: '1:36791425550:web:8f0d0dea60d7d5990aba5f',
-    messagingSenderId: '36791425550',
-    projectId: 'ecotrack-erika',
-    authDomain: 'ecotrack-erika.firebaseapp.com',
-    storageBucket: 'ecotrack-erika.firebasestorage.app',
+    apiKey: 'AIzaSyD_6VXGs0hNzwwoSjBn2kfjUCZ9yQsAugU',
+    appId: '1:535836066275:web:9e5f2fb92fe9db258b20d6',
+    messagingSenderId: '535836066275',
+    projectId: 'ecotrackturmaa',
+    authDomain: 'ecotrackturmaa.firebaseapp.com',
+    storageBucket: 'ecotrackturmaa.firebasestorage.app',
   );
+
 }

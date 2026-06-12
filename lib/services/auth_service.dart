@@ -1,59 +1,57 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  String usuarioCadastrado = "admin@ecotrack.com";
-  String senhaCadastrada = "admin0";
 
   Future<String?> registrarUsuario({
     required String nome,
+    required String sobrenome,
     required String email,
-    required String password,
     required String telefone,
-    required String rm,
+    required String senha,
+    required String confirmarsenha,
   }) async {
+    //tratamento de Exceções
     try {
-      UserCredential credential = await _auth.createUserWithEmailAndPassword(
+      UserCredential credencial = await _auth.createUserWithEmailAndPassword(
         email: email,
-        password: password,
+        password: senha,
       );
-      String uid = credential.user!.uid;
-      await _firestore.collection("users").doc(uid).set({
-        "name": nome,
-        "email": email,
-        "password": password,
-        "rm": rm,
-        "telefone": telefone,
+
+      String uid = credencial.user!.uid;
+
+      await _firestore.collection('usuarios').doc(uid).set({
+        'nome': nome,
+        'sobrenome': sobrenome,
+        'email': email,
+        'telefone': telefone,
+        'senha': senha,
+        'confirmarsenha': confirmarsenha,
       });
 
       return null;
-    } on FirebaseAuthException catch (exception) {
-      switch (exception.code) {
-        case "email-already-in-use":
-          return "Este email já está em uso";
-        case "weak-password":
-          return "A senha é muito fraca";
-        case "invalid-email":
-          return "Insira um email válido";
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        return 'Este e-mail já está cadastrado';
+      } else if (e.code == 'weak-password') {
+        return 'A senha é muito fraca';
+      } else if (e.code == 'invalid-email') {
+        return 'E-mail inválido';
       }
-      return "Erro no cadastro ${exception.message}";
-    } catch (exception) {
-      return "Erro inesperado $exception";
+      return 'Erro no cadastro ${e.message}';
+    } catch (e) {
+      return 'Erro inesperado $e';
     }
   }
 
   Future<String?> login({
     required String email,
-    required String password,
+    required String password
   }) async {
-    return "hii";
-  }
-
-  bool register(String email, String password) {
-    this.usuarioCadastrado = email;
-    this.senhaCadastrada = password;
-    return true;
+    //validação se usuario existe na base de dados
+    //senha esta correta
+    //email e senha incorretos
   }
 }

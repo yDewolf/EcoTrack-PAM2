@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "ecotrack" "\0"
+            VALUE "FileDescription", "projeto_firebase" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "ecotrack" "\0"
+            VALUE "InternalName", "projeto_firebase" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "ecotrack.exe" "\0"
-            VALUE "ProductName", "ecotrack" "\0"
+            VALUE "OriginalFilename", "projeto_firebase.exe" "\0"
+            VALUE "ProductName", "projeto_firebase" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
