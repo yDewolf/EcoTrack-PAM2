@@ -21,7 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController senhaController = TextEditingController();
   final TextEditingController confirmarSenhaController = TextEditingController();
 
-  void validateRegister() {
+  void validateRegister() async {
     if (_formKey.currentState!.validate()) {
       String email = this.emailController.text;
       String password = this.senhaController.text;
@@ -30,7 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       String sobrenome = this.sobrenomeController.text;
       String confirmarsenha = this.confirmarSenhaController.text;
 
-      Future<String?> result = this.authService.registrarUsuario(
+      String? result = await this.authService.registrarUsuario(
         email: email,
         senha: password,
         telefone: telefone,
@@ -38,10 +38,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
         sobrenome: sobrenome,
         confirmarsenha: confirmarsenha
       );
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
-      );
+      if (result == null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LoginScreen()),
+        );
+      }
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(result.toString())));

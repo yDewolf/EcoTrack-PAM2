@@ -21,22 +21,31 @@ class _LoginScreenState extends State<LoginScreen> {
   bool hidePassword = true;
 
   // Validar login:
-  void validateLogin() {
+  Future<void> validateLogin() async {
     if (_formKey.currentState!.validate()) {
       String email = this.emailTxtController.text;
       String password = this.passwordTxtController.text;
+      try {
+        String? value = await this.authService.login(
+          email: email,
+          password: password,
+        );
 
-      Future<String?> result = this.authService.login(
-        email: email,
-        password: password,
-      );
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(result.toString())));
+        if (value == null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Login failed. Please try again.')),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
     }
   }
 

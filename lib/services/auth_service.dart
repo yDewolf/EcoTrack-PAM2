@@ -40,7 +40,7 @@ class AuthService {
       } else if (e.code == 'invalid-email') {
         return 'E-mail inválido';
       }
-      return 'Erro no cadastro ${e.message}';
+      return 'Erro no cadastro ${e.message} ${e.code}';
     } catch (e) {
       return 'Erro inesperado $e';
     }
@@ -50,9 +50,28 @@ class AuthService {
     required String email,
     required String password
   }) async {
-    // TODO
-    //validação se usuario existe na base de dados
-    //senha esta correta
-    //email e senha incorretos
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+            email: email.trim(),
+            password: password.trim(),
+          );
+    } on FirebaseAuthException catch (e) {
+      String errorMessage = "An error occurred. Please try again.";
+
+      if (e.code == 'user-not-found') {
+        errorMessage = "No user found for that email.";
+      } else if (e.code == 'wrong-password') {
+        errorMessage = "Incorrect password provided.";
+      } else if (e.code == 'invalid-email') {
+        errorMessage = "The email address is badly formatted.";
+      } else if (e.code == 'user-disabled') {
+        errorMessage = "This user account has been disabled.";
+      }
+
+      return errorMessage;
+    } catch (e) {
+      return ("Unexpected error occurred." + e.toString());
+    }
   }
 }
