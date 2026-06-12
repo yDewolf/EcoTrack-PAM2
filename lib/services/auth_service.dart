@@ -50,6 +50,7 @@ class AuthService {
     required String email,
     required String password
   }) async {
+    // TODO
     //validação se usuario existe na base de dados
     //senha esta correta
     //email e senha incorretos

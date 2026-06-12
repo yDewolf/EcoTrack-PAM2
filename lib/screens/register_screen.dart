@@ -1,3 +1,5 @@
+import 'package:ecotrack/screens/login_screen.dart';
+import 'package:ecotrack/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -11,12 +13,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
+  final AuthService authService = AuthService();
   final TextEditingController nomeController = TextEditingController();
   final TextEditingController sobrenomeController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController telefoneController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
   final TextEditingController confirmarSenhaController = TextEditingController();
+
+  void validateRegister() {
+    if (_formKey.currentState!.validate()) {
+      String email = this.emailController.text;
+      String password = this.senhaController.text;
+      String telefone = this.telefoneController.text;
+      String nome = this.nomeController.text;
+      String sobrenome = this.sobrenomeController.text;
+      String confirmarsenha = this.confirmarSenhaController.text;
+
+      Future<String?> result = this.authService.registrarUsuario(
+        email: email,
+        senha: password,
+        telefone: telefone,
+        nome: nome,
+        sobrenome: sobrenome,
+        confirmarsenha: confirmarsenha
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LoginScreen()),
+      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(result.toString())));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,16 +189,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
 
                     onPressed: (){
-
                       if(_formKey.currentState!.validate()){
-
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Usuário cadastrado com sucesso"))
-                        );
-
-                        Navigator.pop(context);
+                        this.validateRegister();
                       }
-
                     },
 
                     child: Text(
